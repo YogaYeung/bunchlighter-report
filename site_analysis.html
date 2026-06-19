@@ -108,7 +108,7 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
   </div>
 
   <div class="callout">
-    <b>一句话结论：</b>品牌调性方向对（暗黑工业奢侈 + 锻火橙），但<b>执行层多处硬伤直接拦截转化</b>——产品详情页挂 $0.00 且零产品信息、全站零评价、Hero banner 无任何点击跳转、邮件弹窗遮罩拦截整页点击、最核心的黄色加购按钮白字几乎看不清。下面每条都配实测截图，一眼可验。
+    <b>一句话结论：</b>品牌调性方向对（暗黑工业奢侈 + 锻火橙），但<b>执行层多处硬伤直接拦截转化</b>——产品详情页挂 $0.00、卖点几乎全锁在图片里（可读文字极少）、全站零评价、Hero banner 无任何点击跳转、邮件弹窗遮罩拦截整页点击、最核心的黄色加购按钮白字几乎看不清。下面每条都配实测截图，一眼可验。
   </div>
 
   <div class="sec">
@@ -127,13 +127,13 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
 
     <div class="card"><div class="card-grid">
       <div class="card-main">
-        <span class="badge b-fatal">致命 · #2</span>
-        <h3>详情页几乎零产品信息（无描述 / 无工艺 / 无规格）</h3>
-        <div class="kv">奢侈品靠故事溢价，但 PDP <strong>没有任何产品描述区</strong>。卖点（大马士革钢锻造 / 标志性 “Ping” 声 / 贝母镶嵌）一个字都没讲。</div>
-        <div class="evi">实测：产品描述 descLength = <b>0</b>；PDP 结构内容仅 “You may also like / Recently viewed / 全站统一 FAQ”；正文总字数仅 4511（含页脚）</div>
-        <div class="fix"><b>建议：</b>每个 PDP 补“工艺故事 + 材质规格表 + 尺寸/重量 + 保养 + 视频”，把客单价撑起来；这是奢侈品转化的核心承接。</div>
+        <span class="badge b-fatal">严重 · #2</span>
+        <h3>卖点几乎全锁在图片里（文字可读内容极少）</h3>
+        <div class="kv">PDP 其实<strong>有</strong>完整的工艺故事与卖点——"Permanent Soul / 酸洗抛光锻造 / 每把纹路唯一 No.1 of 1"，还有品牌宣言长图、工艺图标、保养与包装说明。问题是 <strong>90% 卖点用图片承载</strong>：搜索引擎、AI、读屏器能读到的纯文字极少。</div>
+        <div class="evi">实测（JS 渲染后）：真文本 descText ≈ <b>543 字</b> + <b>8 张</b>承载卖点的长图（最高 2700px，alt 多为空）。图片里的卖点 SEO/GEO 抓不到、加载慢、无障碍读不到。<br><span style="opacity:.7">（前一版报告测出 descLength=0，是抓取在 Shopline 懒加载渲染完成前读取所致，已修正。）</span></div>
+        <div class="fix"><b>建议：</b>把图片里的关键卖点（工艺 / 材质规格 / 尺寸·重量 / 保养）补成<strong>真文字</strong>结构化呈现 + 给每张图填 alt + 加视频；视觉长图保留，但别让文字只活在像素里。</div>
       </div>
-      <div class="card-shot"><div><div class="phone"><img src="assets/bunch-mobile-pdp.jpeg" alt="PDP 无信息"></div><div class="shot-cap">买价框下方直接跳通用模块</div></div></div>
+      <div class="card-shot"><div><div class="phone"><img src="assets/bunch-pdp-content.jpeg" alt="PDP 卖点图片化"></div><div class="shot-cap">卖点齐全，但几乎全是图片</div></div></div>
     </div></div>
 
     <div class="card"><div class="card-grid">
@@ -250,7 +250,7 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
         <tr><td><span class="pri p1">P0</span></td><td>弹窗遮罩拦截点击</td><td>延迟触发+加大关闭键+不阻塞底层</td></tr>
         <tr><td><span class="pri p2">P1</span></td><td>白字黄底 CTA 看不清</td><td>按钮文字改深色（对比度→8+）</td></tr>
         <tr><td><span class="pri p2">P1</span></td><td>Hero banner 无 CTA</td><td>加明确 CTA 链接到主推系列</td></tr>
-        <tr><td><span class="pri p2">P1</span></td><td>PDP 零产品信息</td><td>补工艺故事+材质规格+尺寸+视频</td></tr>
+        <tr><td><span class="pri p2">P1</span></td><td>PDP 卖点图片化（文字不可读）</td><td>图片卖点转真文字+材质规格+尺寸+填 alt+视频</td></tr>
         <tr><td><span class="pri p2">P1</span></td><td>列表加购弹定制窗</td><td>改一键入袋，刻字移到购物车 upsell</td></tr>
         <tr><td><span class="pri p3">P2</span></td><td>死链徽章/重复底栏/菜单错链</td><td>徽章指向政策页，删重复导航，修错链</td></tr>
         <tr><td><span class="pri p3">P2</span></td><td>文案残留</td><td>清 [XX] 占位符、中文顿号、our-stroy 拼写</td></tr>
