@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bunchlighter.com — 竞品发现报告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canva-navy:#2B3A67;--canva-teal:#00B4D8;--canva-coral:#FF6B6B;
+  --canva-mint:#06D6A0;--canva-amber:#FFD166;--canva-purple:#7B68EE;--canva-pink:#FF85A1;
+  --text-primary:#1a1a2e;--text-secondary:#4a4a68;--text-muted:#8b8ba3;
+  --bg-white:#fff;--bg-light:#f8f9fc;--bg-card:#f0f2f8;--border-color:#e4e7f0;
+  --font:'Plus Jakarta Sans','Noto Sans SC',-apple-system,sans-serif;
+  --radius-lg:16px;--radius-md:12px;--radius-sm:8px;
+  --shadow-card:0 2px 12px rgba(43,58,103,.06);--shadow-hover:0 8px 24px rgba(43,58,103,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);font-size:14px;line-height:1.8;color:var(--text-primary);background:var(--bg-white);-webkit-font-smoothing:antialiased}
+/* cover */
+.cover{height:380px;background:var(--canva-navy);color:#fff;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.cover-bg{position:absolute;inset:0;z-index:1;filter:blur(60px)}
+.blob{position:absolute;border-radius:50%;opacity:.35}
+.blob-1{width:240px;height:240px;background:var(--canva-teal);top:-50px;right:-30px;animation:float1 8s ease-in-out infinite}
+.blob-2{width:180px;height:180px;background:var(--canva-coral);bottom:-30px;left:-10px;animation:float2 10s ease-in-out infinite}
+.blob-3{width:150px;height:150px;background:var(--canva-purple);top:40%;left:15%;animation:float3 12s ease-in-out infinite}
+.blob-4{width:110px;height:110px;background:var(--canva-amber);top:15%;right:28%;animation:float4 9s ease-in-out infinite}
+.blob-5{width:90px;height:90px;background:var(--canva-mint);bottom:20%;right:15%;animation:float1 11s ease-in-out infinite reverse}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-30px,20px) scale(1.1)}66%{transform:translate(20px,-15px) scale(.95)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(25px,-20px) scale(1.08)}66%{transform:translate(-15px,25px) scale(.92)}}
+@keyframes float3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,15px) scale(1.15)}}
+@keyframes float4{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,-20px) scale(1.1)}}
+.cover-inner{position:relative;z-index:2;text-align:center;padding:2rem 3rem}
+.cover-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--canva-teal);border:1.5px solid rgba(0,180,216,.5);padding:4px 16px;border-radius:99px;margin-bottom:1.2rem;background:rgba(0,180,216,.08)}
+.cover h1{font-size:40px;font-weight:800;letter-spacing:-.5px;line-height:1.2;margin:0 0 .5rem;padding:0;color:#fff;background:none;border:none;text-shadow:0 2px 20px rgba(0,180,216,.35)}
+.cover h1::after{display:none}
+.cover-brand{font-size:18px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:.4rem}
+.cover-subtitle{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:1.6rem}
+.cover-stats{display:flex;gap:24px;justify-content:center;margin-bottom:1.2rem;flex-wrap:wrap}
+.cover-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-sm);padding:8px 16px;text-align:center}
+.cover-stat .num{font-size:20px;font-weight:800;color:var(--canva-teal)}
+.cover-stat .label{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:1px}
+.cover-meta{font-size:11px;color:rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.cover-dot{width:3px;height:3px;background:var(--canva-teal);border-radius:50%;display:inline-block}
+/* body */
+.report-body{max-width:820px;margin:0 auto;padding:2.5rem 1.5rem}
+h1{font-size:24px;font-weight:800;color:var(--canva-navy);margin:3rem 0 1.2rem;padding:.8rem 1.2rem;background:linear-gradient(135deg,#eef2ff,#f0f7ff);border-left:5px solid var(--canva-teal);border-radius:0 var(--radius-md) var(--radius-md) 0}
+.section-note{color:var(--text-muted);font-size:13px;margin-bottom:1rem}
+hr{border:none;height:2px;background:linear-gradient(90deg,var(--canva-teal),var(--canva-purple),var(--canva-coral));margin:2.5rem 0;border-radius:1px;opacity:.3}
+/* rank list */
+.rank-list{list-style:none;padding:0;margin:1rem 0}
+.rank-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;margin-bottom:10px;background:var(--bg-white);border-radius:var(--radius-md);box-shadow:var(--shadow-card);border:1px solid var(--border-color);transition:box-shadow .2s}
+.rank-item:hover{box-shadow:var(--shadow-hover)}
+.rank-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff}
+.rank-num.red{background:var(--canva-coral)}.rank-num.teal{background:var(--canva-teal)}
+.rank-num.amber{background:var(--canva-amber);color:var(--canva-navy)}.rank-num.mint{background:var(--canva-mint)}
+.rank-num.purple{background:var(--canva-purple)}.rank-num.navy{background:var(--canva-navy)}.rank-num.coral{background:var(--canva-coral)}
+.rank-content{flex:1}
+.rank-label{font-size:14px;font-weight:700;color:var(--canva-navy);margin-bottom:4px}
+.rank-desc{font-size:12px;color:var(--text-muted);line-height:1.6}
+.rank-badge{flex-shrink:0;font-size:10px;font-weight:700;letter-spacing:.5px;padding:3px 10px;border-radius:99px;color:#fff;align-self:center}
+.badge-red{background:var(--canva-coral)}.badge-teal{background:var(--canva-teal)}
+.badge-amber{background:var(--canva-amber);color:var(--canva-navy)}.badge-mint{background:var(--canva-mint)}
+.badge-purple{background:var(--canva-purple)}.badge-navy{background:var(--canva-navy)}.badge-coral{background:var(--canva-coral)}
+/* need cards */
+.need-cards{display:grid;grid-template-columns:1fr;gap:14px;margin:1.2rem 0}
+.need-card{background:var(--bg-white);border-radius:var(--radius-md);box-shadow:var(--shadow-card);border:1px solid var(--border-color);padding:18px 20px;display:flex;gap:16px;align-items:flex-start}
+.need-icon{font-size:24px;flex-shrink:0;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.need-content h4{font-size:14px;font-weight:700;color:var(--canva-navy);margin-bottom:6px}
+.need-content p{font-size:13px;color:var(--text-secondary);margin:0;line-height:1.65}
+.need-opp{display:inline-block;font-size:11px;font-weight:600;color:var(--canva-mint);background:rgba(6,214,160,.1);border:1px solid rgba(6,214,160,.3);border-radius:4px;padding:2px 8px;margin-top:6px}
+/* table */
+table{width:100%;border-collapse:separate;border-spacing:0;margin:1.2rem 0 2rem;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-card)}
+thead tr{background:var(--canva-navy)}
+thead th{padding:12px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.9);text-transform:uppercase}
+tbody tr:nth-child(even){background:var(--bg-light)}
+tbody td{padding:11px 16px;font-size:13px;color:var(--text-primary);border-bottom:1px solid var(--border-color)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#eef6ff}
+/* alert */
+.alert{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:var(--radius-md);margin:1rem 0}
+.alert-info{background:#f0f9ff;border:1px solid #bae6fd}
+.alert-success{background:#f0fdf4;border:1px solid #bbf7d0}
+.alert-warning{background:#fff9ee;border:1px solid #ffe29a}
+.alert-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.alert-body{font-size:13px;color:var(--text-secondary);line-height:1.7}
+.alert-body strong{display:block;margin-bottom:2px}
+/* tag */
+.tag-success{background:#e8f5e9;color:#2e7d32}
+.tag-warning{background:#fff3cd;color:#856404}
+.tag-danger{background:#fce4ec;color:#c62828}
+.tag-info{background:#e3f2fd;color:#1565c0}
+.card-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:4px;margin-bottom:8px}
+/* brand grid */
+.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:1.2rem 0}
+@media(max-width:600px){.brand-grid{grid-template-columns:1fr}}
+.brand-card{background:var(--bg-white);border-radius:var(--radius-md);box-shadow:var(--shadow-card);border:1px solid var(--border-color);overflow:hidden}
+.brand-header{padding:14px 16px}
+.brand-name{font-size:15px;font-weight:800;color:#fff}
+.brand-score{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px}
+.brand-body{padding:14px 16px}
+.brand-desc{font-size:12px;color:var(--text-secondary);line-height:1.6}
+.brand-issue{font-size:12px;color:var(--text-secondary);margin-top:8px;padding-left:16px}
+.brand-issue li{margin-bottom:3px}
+/* comp cards */
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:1.2rem 0}
+.comp-card{background:var(--bg-white);border-radius:var(--radius-md);box-shadow:var(--shadow-card);border:1px solid var(--border-color);padding:16px;border-left:4px solid var(--canva-teal)}
+.comp-card.mid{border-left-color:var(--canva-amber)}
+.comp-card.low{border-left-color:var(--border-color)}
+.comp-brand{font-size:14px;font-weight:800;color:var(--canva-navy);margin-bottom:4px}
+.comp-domain{font-size:11px;color:var(--canva-teal);margin-bottom:6px;font-family:monospace}
+.comp-price{font-size:11px;color:var(--text-muted);margin-bottom:6px}
+.comp-pos{font-size:12px;color:var(--text-secondary);line-height:1.6}
+.comp-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:8px}
+/* trend / keyword grid */
+.kw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:1.2rem 0}
+.kw-card{background:var(--bg-white);border-radius:var(--radius-md);box-shadow:var(--shadow-card);border:1px solid var(--border-color);padding:16px;border-top:3px solid var(--canva-teal)}
+.kw-word{font-size:14px;font-weight:800;color:var(--canva-navy);margin-bottom:4px}
+.kw-meta{font-size:11px;color:var(--text-muted);line-height:1.6}
+.kw-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;color:#fff;background:var(--canva-mint);margin-top:4px}
+/* misc */
+.data-note{background:#f8f9fc;border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:12px 16px;font-size:11px;color:var(--text-muted);margin-top:3rem;line-height:1.7}
+.data-note strong{color:var(--text-secondary)}
+.back-link{display:inline-block;margin:1.5rem 0 0;font-size:13px;font-weight:600;color:var(--canva-teal);text-decoration:none}
+
+
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="cover-bg">
+    <div class="blob blob-1"></div><div class="blob blob-2"></div>
+    <div class="blob blob-3"></div><div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+  </div>
+  <div class="cover-inner">
+    <div class="cover-badge">COMPETITOR DISCOVERY REPORT</div>
+    <div class="cover-brand">bunchlighter.com</div>
+    <h1>竞品发现报告</h1>
+    <div class="cover-subtitle">高端手工艺打火机 · 独立站竞品矩阵</div>
+    <div class="cover-stats"><div class="cover-stat"><div class="num">10</div><div class="label">竞品总数</div></div><div class="cover-stat"><div class="num">3</div><div class="label">高相关竞品</div></div><div class="cover-stat"><div class="num">$199 - $1,999 USD</div><div class="label">甲方价格带</div></div><div class="cover-stat"><div class="num">2026</div><div class="label">采集日期</div></div></div>
+    <div class="cover-meta"><span>Web Search</span><span class="cover-dot"></span><span>Meta Ad Library</span><span class="cover-dot"></span><span>Google</span><span class="cover-dot"></span><span>2026</span></div>
+  </div>
+</div>
+<div class="report-body">
+<a class="back-link" href="index.html">← 返回报告中心</a>
+<h1>竞品全览</h1><table><thead><tr><th>品牌</th><th>域名</th><th>价格带</th><th>相关度</th><th>定位</th></tr></thead><tbody><tr><td>S.T. Dupont</td><td>st-dupont.com</td><td>$200 - $3,000+ USD</td><td>高</td><td>法国奢侈品牌，1872年创立，以Ligne 2系列标志性&#x27;Ping&#x27;开盖声闻名，中国漆、贵金属工艺，奢侈打火机行业标杆</td></tr>
+<tr><td>THORENS</td><td>thorenslighter.com</td><td>$69 - $500+ USD</td><td>高</td><td>瑞士品牌，1883年创立，主打机械结构美学、复古工艺和精密机械感，DTC独立站模式</td></tr>
+<tr><td>JBlunt Designs</td><td>jbluntdesigns.com</td><td>$400 - $600+ USD</td><td>高</td><td>美国手工匠人品牌，专注大马士革钢（Damasteel）EDC配件，含打火机、手电、钥匙扣，限量生产</td></tr>
+<tr><td>Dunhill</td><td>dunhill.com</td><td>$300 - $2,000+ USD</td><td>中</td><td>英国奢侈品牌，Rollagas和Unique系列经典款，英伦绅士风格，贵金属和漆面工艺</td></tr>
+<tr><td>IM Corona</td><td>imcorona.com</td><td>$100 - $400 USD</td><td>中</td><td>日本制造（1933年创立），Old Boy系列经典烟斗打火机，精密工程+日本匠人精神</td></tr>
+<tr><td>Elie Bleu</td><td>eliebleu.com</td><td>$175 - $850+ USD</td><td>中</td><td>法国品牌，以雪茄盒闻名，打火机走限量路线，精致工艺和大胆设计，收藏家定位</td></tr>
+<tr><td>Kiribi / Tsubota Pearl</td><td>lastmanner.com (主要零售渠道)</td><td>$80 - $300 USD</td><td>中</td><td>日本Tsubota Pearl（1952年创立）旗下品牌，精密金属加工，简约日式美学，通过Last Manner等渠道DTC销售</td></tr>
+<tr><td>Tokyo Pipe Co. (Douglass)</td><td>lastmanner.com (主要零售渠道)</td><td>$100 - $200 USD</td><td>中</td><td>日本东京制造，手工机械打火机，紧凑精密设计，限量发售，EDC文化圈热门</td></tr>
+<tr><td>Jurgen Schanz</td><td>bladehq.com / knifecenter.com (零售渠道)</td><td>$295+ USD</td><td>低</td><td>德国刀匠，副线产品为大马士革钢Zippo外壳，纯手工一人工坊</td></tr>
+<tr><td>Zippo</td><td>zippo.com</td><td>$20 - $200 USD</td><td>低</td><td>美国经典品牌（1932年创立），防风打火机代名词，标志性&#x27;Click&#x27;声，大众到中端定位</td></tr>
+</tbody></table>
+<hr>
+<h1>高相关竞品（3 家）</h1><p class="section-note">与甲方直接竞争，价格带 / 品类 / 用户群高度重叠</p><div class="comp-grid">
+  <div class="comp-card ">
+    <div class="comp-brand">S.T. Dupont</div>
+    <div class="comp-domain">st-dupont.com</div>
+    <div class="comp-price">💰 $200 - $3,000+ USD</div>
+    <span class="comp-tag tag-info">搜索发现（多个榜单提及）</span>
+    <div class="comp-pos">法国奢侈品牌，1872年创立，以Ligne 2系列标志性&#x27;Ping&#x27;开盖声闻名，中国漆、贵金属工艺，奢侈打火机行业标杆</div>
+    <span class="rank-badge badge-teal" style="margin-top:8px;display:inline-block">相关度 高</span>
+  </div>
+  <div class="comp-card ">
+    <div class="comp-brand">THORENS</div>
+    <div class="comp-domain">thorenslighter.com</div>
+    <div class="comp-price">💰 $69 - $500+ USD</div>
+    <span class="comp-tag tag-info">搜索发现（多个榜单提及）</span>
+    <div class="comp-pos">瑞士品牌，1883年创立，主打机械结构美学、复古工艺和精密机械感，DTC独立站模式</div>
+    <span class="rank-badge badge-teal" style="margin-top:8px;display:inline-block">相关度 高</span>
+  </div>
+  <div class="comp-card ">
+    <div class="comp-brand">JBlunt Designs</div>
+    <div class="comp-domain">jbluntdesigns.com</div>
+    <div class="comp-price">💰 $400 - $600+ USD</div>
+    <span class="comp-tag tag-info">搜索发现</span>
+    <div class="comp-pos">美国手工匠人品牌，专注大马士革钢（Damasteel）EDC配件，含打火机、手电、钥匙扣，限量生产</div>
+    <span class="rank-badge badge-teal" style="margin-top:8px;display:inline-block">相关度 高</span>
+  </div>
+</div>
+<hr>
+<h1>中等相关竞品（7 家）</h1><p class="section-note">部分重叠，可作为差异化参考</p><div class="comp-grid">
+  <div class="comp-card mid">
+    <div class="comp-brand">Dunhill</div>
+    <div class="comp-domain">dunhill.com</div>
+    <div class="comp-price">💰 $300 - $2,000+ USD</div>
+    <span class="comp-tag tag-info">搜索发现（多个榜单提及）</span>
+    <div class="comp-pos">英国奢侈品牌，Rollagas和Unique系列经典款，英伦绅士风格，贵金属和漆面工艺</div>
+    <span class="rank-badge badge-amber" style="margin-top:8px;display:inline-block">相关度 中</span>
+  </div>
+  <div class="comp-card mid">
+    <div class="comp-brand">IM Corona</div>
+    <div class="comp-domain">imcorona.com</div>
+    <div class="comp-price">💰 $100 - $400 USD</div>
+    <span class="comp-tag tag-info">搜索发现</span>
+    <div class="comp-pos">日本制造（1933年创立），Old Boy系列经典烟斗打火机，精密工程+日本匠人精神</div>
+    <span class="rank-badge badge-amber" style="margin-top:8px;display:inline-block">相关度 中</span>
+  </div>
+  <div class="comp-card mid">
+    <div class="comp-brand">Elie Bleu</div>
+    <div class="comp-domain">eliebleu.com</div>
+    <div class="comp-price">💰 $175 - $850+ USD</div>
+    <span class="comp-tag tag-info">搜索发现</span>
+    <div class="comp-pos">法国品牌，以雪茄盒闻名，打火机走限量路线，精致工艺和大胆设计，收藏家定位</div>
+    <span class="rank-badge badge-amber" style="margin-top:8px;display:inline-block">相关度 中</span>
+  </div>
+  <div class="comp-card mid">
+    <div class="comp-brand">Kiribi / Tsubota Pearl</div>
+    <div class="comp-domain">lastmanner.com (主要零售渠道)</div>
+    <div class="comp-price">💰 $80 - $300 USD</div>
+    <span class="comp-tag tag-info">搜索发现</span>
+    <div class="comp-pos">日本Tsubota Pearl（1952年创立）旗下品牌，精密金属加工，简约日式美学，通过Last Manner等渠道DTC销售</div>
+    <span class="rank-badge badge-amber" style="margin-top:8px;display:inline-block">相关度 中</span>
+  </div>
+  <div class="comp-card mid">
+    <div class="comp-brand">Tokyo Pipe Co. (Douglass)</div>
+    <div class="comp-domain">lastmanner.com (主要零售渠道)</div>
+    <div class="comp-price">💰 $100 - $200 USD</div>
+    <span class="comp-tag tag-info">搜索发现</span>
+    <div class="comp-pos">日本东京制造，手工机械打火机，紧凑精密设计，限量发售，EDC文化圈热门</div>
+    <span class="rank-badge badge-amber" style="margin-top:8px;display:inline-block">相关度 中</span>
+  </div>
+  <div class="comp-card mid">
+    <div class="comp-brand">Jurgen Schanz</div>
+    <div class="comp-domain">bladehq.com / knifecenter.com (零售渠道)</div>
+    <div class="comp-price">💰 $295+ USD</div>
+    <span class="comp-tag tag-info">搜索发现</span>
+    <div class="comp-pos">德国刀匠，副线产品为大马士革钢Zippo外壳，纯手工一人工坊</div>
+    <span class="rank-badge badge-navy" style="margin-top:8px;display:inline-block">相关度 低</span>
+  </div>
+  <div class="comp-card mid">
+    <div class="comp-brand">Zippo</div>
+    <div class="comp-domain">zippo.com</div>
+    <div class="comp-price">💰 $20 - $200 USD</div>
+    <span class="comp-tag tag-info">搜索发现（行业标杆）</span>
+    <div class="comp-pos">美国经典品牌（1932年创立），防风打火机代名词，标志性&#x27;Click&#x27;声，大众到中端定位</div>
+    <span class="rank-badge badge-navy" style="margin-top:8px;display:inline-block">相关度 低</span>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

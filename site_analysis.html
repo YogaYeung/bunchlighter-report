@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUNCH 独立站深度分析报告 — 市场调研与竞品分析报告</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>/* ═══════════════════════════════════════════════
+   Canva-Inspired Report Theme
+   ═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Canva 调色盘 */
+    --canva-navy: #2B3A67;
+    --canva-teal: #00B4D8;
+    --canva-coral: #FF6B6B;
+    --canva-mint: #06D6A0;
+    --canva-amber: #FFD166;
+    --canva-purple: #7B68EE;
+    --canva-pink: #FF85A1;
+
+    /* 文字色阶 */
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a4a68;
+    --text-muted: #8b8ba3;
+
+    /* 背景色阶 */
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fc;
+    --bg-card: #f0f2f8;
+    --border-color: #e4e7f0;
+
+    /* 字体 */
+    --font: 'Plus Jakarta Sans', 'Noto Sans SC', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* 圆角与阴影 */
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --shadow-card: 0 2px 12px rgba(43, 58, 103, 0.06);
+    --shadow-hover: 0 8px 24px rgba(43, 58, 103, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+@page {
+    size: A4;
+    margin: 1.5cm 2cm;
+}
+
+body {
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-primary);
+    background: var(--bg-white);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════
+   封面 — 紧凑型 + 动态 Blob 动画背景
+   ═══════════════════════════════════════════════ */
+
+.cover {
+    page-break-after: always;
+    height: 360px;
+    background: var(--canva-navy);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 动画 Blob 背景层 */
+.cover-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    filter: blur(60px);
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.35;
+}
+
+.blob-1 {
+    width: 220px;
+    height: 220px;
+    background: var(--canva-teal);
+    top: -40px;
+    right: -20px;
+    animation: float1 8s ease-in-out infinite;
+}
+
+.blob-2 {
+    width: 180px;
+    height: 180px;
+    background: var(--canva-coral);
+    bottom: -30px;
+    left: -10px;
+    animation: float2 10s ease-in-out infinite;
+}
+
+.blob-3 {
+    width: 140px;
+    height: 140px;
+    background: var(--canva-purple);
+    top: 40%;
+    left: 20%;
+    animation: float3 12s ease-in-out infinite;
+}
+
+.blob-4 {
+    width: 100px;
+    height: 100px;
+    background: var(--canva-amber);
+    top: 20%;
+    right: 25%;
+    animation: float4 9s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-30px, 20px) scale(1.1); }
+    66% { transform: translate(20px, -15px) scale(0.95); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(25px, -20px) scale(1.08); }
+    66% { transform: translate(-15px, 25px) scale(0.92); }
+}
+
+@keyframes float3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, 15px) scale(1.15); }
+}
+
+@keyframes float4 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, -20px) scale(1.1); }
+}
+
+.cover-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem 3rem;
+}
+
+.cover-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--canva-teal);
+    border: 1.5px solid rgba(0, 180, 216, 0.5);
+    padding: 4px 16px;
+    border-radius: 99px;
+    margin-bottom: 1.2rem;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 180, 216, 0.08);
+}
+
+.cover h1 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+    color: #ffffff;
+    border: none;
+    background: none;
+    padding: 0;
+}
+.cover h1::after { display: none; }
+
+.cover-subtitle {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 1.5rem;
+}
+
+.cover-meta {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cover-dot {
+    width: 3px;
+    height: 3px;
+    background: var(--canva-teal);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* ═══════════════════════════════════════════════
+   正文容器
+   ═══════════════════════════════════════════════ */
+
+.report-body {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+/* ═══════════════════════════════════════════════
+   标题系统 — 彩色左边条 + 色块背景
+   ═══════════════════════════════════════════════ */
+
+h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--canva-navy);
+    margin: 3rem 0 1.2rem;
+    padding: 0.8rem 1.2rem;
+    background: linear-gradient(135deg, #eef2ff, #f0f7ff);
+    border-left: 5px solid var(--canva-teal);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    page-break-after: avoid;
+    position: relative;
+}
+h1::after { display: none; }
+
+h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--canva-navy);
+    margin: 2.5rem 0 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--canva-teal);
+    page-break-after: avoid;
+    display: inline-block;
+}
+
+/* h2 伪元素重置 — 不需要从旧样式继承 */
+h2::after { display: none; }
+
+h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 2rem 0 0.6rem;
+    padding-left: 12px;
+    border-left: 3px solid var(--canva-coral);
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 1.2rem 0 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════
+   文字与链接
+   ═══════════════════════════════════════════════ */
+
+p {
+    margin-bottom: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.85;
+}
+
+strong { color: var(--canva-navy); font-weight: 700; }
+a { color: var(--canva-teal); text-decoration: none; font-weight: 600; }
+a:hover { text-decoration: underline; }
+
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, var(--canva-teal), var(--canva-purple), var(--canva-coral));
+    margin: 2.5rem 0;
+    border-radius: 1px;
+    opacity: 0.3;
+}
+
+/* ═══════════════════════════════════════════════
+   表格 — Canva 风格圆角彩色表头
+   ═══════════════════════════════════════════════ */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.8rem 0;
+    font-size: 13px;
+    page-break-inside: avoid;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-color);
+}
+
+thead {
+    background: var(--canva-navy);
+}
+
+th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+td {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    vertical-align: top;
+}
+
+tbody tr { background: var(--bg-white); }
+tbody tr:nth-child(even) { background: var(--bg-light); }
+tbody tr:last-child td { border-bottom: none; }
+
+/* ═══════════════════════════════════════════════
+   引用块 — Canva 彩色卡片
+   ═══════════════════════════════════════════════ */
+
+blockquote {
+    position: relative;
+    padding: 1.2rem 1.6rem 1.2rem 3rem;
+    margin: 1.4rem 0;
+    background: var(--bg-light);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--canva-purple);
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    page-break-inside: avoid;
+}
+
+blockquote::before {
+    content: '\201C';
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    font-size: 32px;
+    font-family: Georgia, serif;
+    color: var(--canva-purple);
+    opacity: 0.35;
+    line-height: 1;
+}
+
+blockquote p { margin-bottom: 0.2rem; color: var(--text-secondary); }
+
+/* 交替引用块颜色 */
+blockquote:nth-of-type(3n+2) { border-left-color: var(--canva-teal); }
+blockquote:nth-of-type(3n+2)::before { color: var(--canva-teal); }
+blockquote:nth-of-type(3n+3) { border-left-color: var(--canva-coral); }
+blockquote:nth-of-type(3n+3)::before { color: var(--canva-coral); }
+
+/* ═══════════════════════════════════════════════
+   列表
+   ═══════════════════════════════════════════════ */
+
+ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.4rem;
+    line-height: 1.75;
+}
+
+li::marker {
+    color: var(--canva-teal);
+    font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════
+   代码
+   ═══════════════════════════════════════════════ */
+
+code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--bg-card);
+    color: var(--canva-purple);
+    padding: 2px 7px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+pre {
+    background: var(--canva-navy);
+    color: #e8eaed;
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+}
+
+/* ═══════════════════════════════════════════════
+   自定义组件
+   ═══════════════════════════════════════════════ */
+
+.insight-card {
+    background: linear-gradient(135deg, #f0f7ff, #f5f0ff);
+    border-left: 4px solid var(--canva-teal);
+    padding: 1.4rem 1.8rem;
+    margin: 1.8rem 0;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    page-break-inside: avoid;
+    box-shadow: var(--shadow-card);
+}
+
+.insight-card h4 {
+    color: var(--canva-navy);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.executive-summary {
+    background: linear-gradient(135deg, #eef2ff 0%, #f0f7ff 50%, #f0fff4 100%);
+    padding: 2rem 2.2rem;
+    border-radius: var(--radius-lg);
+    margin: 2rem 0;
+    page-break-inside: avoid;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+}
+
+.swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+    page-break-inside: avoid;
+}
+
+.swot-cell {
+    padding: 1.4rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+}
+
+.swot-cell.strengths { background: #ecfdf5; border-top: 4px solid var(--canva-mint); }
+.swot-cell.weaknesses { background: #fef2f2; border-top: 4px solid var(--canva-coral); }
+.swot-cell.opportunities { background: #eff6ff; border-top: 4px solid var(--canva-teal); }
+.swot-cell.threats { background: #fffbeb; border-top: 4px solid var(--canva-amber); }
+.swot-cell h4 { font-size: 14px; font-weight: 700; margin-bottom: 0.6rem; }
+.swot-cell ul { padding-left: 1.2rem; font-size: 13px; }
+
+.priority-high {
+    display: inline-block;
+    background: var(--canva-coral);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 99px;
+    text-transform: uppercase;
+}
+
+.priority-medium {
+    display: inline-block;
+    background: var(--canva-amber);
+    color: var(--text-primary);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 99px;
+    text-transform: uppercase;
+}
+
+.priority-low {
+    display: inline-block;
+    background: var(--canva-mint);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 99px;
+    text-transform: uppercase;
+}
+
+.screenshot {
+    max-width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin: 1.2rem 0;
+    box-shadow: var(--shadow-hover);
+}
+
+.page-break { page-break-before: always; }
+
+/* ═══════════════════════════════════════════════
+   页脚
+   ═══════════════════════════════════════════════ */
+
+.footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    padding: 2rem 0 1rem;
+    margin-top: 3rem;
+    border-top: 2px solid var(--border-color);
+    letter-spacing: 0.3px;
+}
+
+/* ═══════════════════════════════════════════════
+   打印优化
+   ═══════════════════════════════════════════════ */
+
+@media print {
+    body { font-size: 12px; }
+    .cover { min-height: 100vh; }
+    h1 { margin-top: 2rem; }
+    table, blockquote { box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+    <div class="cover-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+    </div>
+    <div class="cover-inner">
+        <div class="cover-badge">MARKET RESEARCH</div>
+        <h1>BUNCH 独立站深度分析报告</h1>
+        <p class="cover-subtitle">市场调研与竞品分析报告</p>
+        <div class="cover-meta">
+            <span>2026-06-19</span>
+            <span class="cover-dot"></span>
+            <span>Prepared by Yoga</span>
+        </div>
+    </div>
+</div>
+
+<div class="report-body">
+<h1 id="bunchbunchlightercom">BUNCH（bunchlighter.com）独立站深度分析</h1>
+<blockquote>
+<p>分析日期：2026-06-19 ｜ 数据来源：Playwright 实勘首页 + 产品页（Jambhala 黄财神）+ FAQ/页脚正文 + 首页源码特征。已采集桌面/移动端首页与产品页截图 5 张。技术栈基于源码特征检测（标注"检测结果"）。</p>
+</blockquote>
+<h2 id="_1">一、品牌与产品定位</h2>
+<ul>
+<li><strong>品牌名</strong>：BUNCH（域名 bunchlighter.com）</li>
+<li><strong>品类</strong>：高端手工收藏级翻盖打火机（Zippo 形制），延伸 ashtrays 烟灰缸、火石等配件</li>
+<li><strong>核心 Slogan</strong>：The Sound of Distinction · FORGE ON ／ IGNITE THE RESONANCE ／ Details that speak louder than words</li>
+<li><strong>核心卖点（USP）</strong>：</li>
+<li><strong>"Iconic Resonant Ping / Cling" 标志性共鸣开盖音</strong> —— 独特的听觉记忆点，几乎所有产品标题都带此卖点</li>
+<li><strong>实心一体黄铜芯（Solid Integrated Brass Core）</strong></li>
+<li><strong>手工工艺 + 高端材质</strong>：大马士革钢锻造、天然螺钿（Mother-of-Pearl）浮雕、虹彩贝壳、闪光漆艺、景泰蓝珐琅、S925 纯银、钛金镶嵌、真甲虫翅膀镶嵌</li>
+<li><strong>命名叙事</strong>：东方文化母题（Jambhala 财神、Koi 锦鲤、龙凤呈祥、Oiran 花魁）+ 西方哥特（Iron Cross、Constantine、Sanctum）——讲文化故事、塑收藏感</li>
+<li><strong>文案语气</strong>：高端、文艺、收藏家向（"Connoisseur"、"Masterpiece"、"sensory masterpiece"）</li>
+<li><strong>品牌标识</strong>：logo 为手写花体 "BUNCH"，副标 "ORIGINAL STUDIO"</li>
+<li><strong>视觉配色</strong>（实勘截图确认）：纯黑底 + 锻火橙（hero 为铁砧锻烧画面）+ 白字，整体奢侈、暗黑、工业锻造感</li>
+</ul>
+<h2 id="_2">二、价格策略</h2>
+<table>
+<thead>
+<tr>
+<th>区间</th>
+<th>代表产品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入门 $199–310</td>
+<td>Constantine、Iron Cross、Plaid Suit、Feathered Satin</td>
+</tr>
+<tr>
+<td>主力 $380–700</td>
+<td>Jambhala、Golden Plume、Dragon &amp; Phoenix、Emerald Dream 2.0</td>
+</tr>
+<tr>
+<td>高端 $899–999</td>
+<td>Oiran、Echo of Life L2（甲虫翅膀镶嵌）</td>
+</tr>
+<tr>
+<td>顶奢 $1,999+</td>
+<td>Sanctum-Prayer（S925 纯银哥特套装，$2,039）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>划线价折扣</strong>：普遍展示 compare-at 原价（如 $310 ← $450），制造折扣感</li>
+<li><strong>BNPL 分期</strong>：支持 Clearpay，降低高客单决策门槛</li>
+<li><strong>首单优惠</strong>：订阅邮箱减 10%</li>
+</ul>
+<h2 id="_3">三、网站结构</h2>
+<ul>
+<li><strong>关键页面齐全度</strong>：✅ Our Story / Contact Us / Shipping &amp; Payment / Return &amp; Warranty / Privacy / Track Package / FAQ / Blog / Policies</li>
+<li><strong>分类丰富</strong>：30+ collections（按工艺切分：Shell Carving、Forged Damascus、Cloisonné、Gemstone Setting、Anodized Titanium、Celestial、Masterpiece Gallery、Connoisseur Series、Essential Classics、Hot Sale 等）</li>
+<li><strong>内容营销</strong>：Blog 讲工艺故事（"The Temperature of Steel and Time"、保养指南），强化收藏调性</li>
+<li><strong>B2B 通道</strong>：FAQ 明确提供 OEM/ODM、定制刻字、批发 MOQ —— B2C 奢侈 + B2B 批发双轨</li>
+</ul>
+<h2 id="_4">四、转化路径</h2>
+<ul>
+<li>首页商品卡片<strong>直接 Add to cart</strong>，路径短（首页 → 加购，2 步）</li>
+<li>特色款用 "SHOP NOW" 跳详情页</li>
+<li>CTA 清晰（Add to cart / Shop Now 主按钮）</li>
+<li>多币种（USD/AUD/CAD/ILS/SAR/AED/GBP）+ 全球免邮，覆盖北美、欧洲、东南亚、中东</li>
+<li>顶部双促销条：<code>🚚Complimentary Worldwide Shipping</code> + 滚动 <code>Free Damascus Cigar Rest with every order. Limited stock!</code>（稀缺感 + 赠品钩子）</li>
+</ul>
+<h3 id="pdp-jambhala">产品页（PDP）实勘 —— 以 Jambhala 黄财神为例</h3>
+<p>转化要素<strong>齐备且设计专业</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>实勘内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>信任徽章</td>
+<td>✈️ Free Fast Shipping Worldwide（7–10 天）／🔄 14-Day Love It or Return It Guarantee／🛡️ Lifetime Quality Warranty</td>
+</tr>
+<tr>
+<td>赠品加购</td>
+<td>"Bespoke Damascus Steel Cigar Rest (Free Gift)" 选项<strong>默认勾选 Yes</strong>，提升感知价值</td>
+</tr>
+<tr>
+<td>变体选择</td>
+<td>Color：Paris Nail Series / Retina Pattern Series</td>
+</tr>
+<tr>
+<td>个性化定制</td>
+<td>免费刻字输入框（Enter a name，0/100 字符）——支撑送礼场景</td>
+</tr>
+<tr>
+<td>文案结构</td>
+<td>"THE CRAFT" 加粗要点（Hand-Carved Relief / Solid Brass Body / Light Interaction / Tactile Finish）+ "SPECS" 折叠区，卖点提炼专业</td>
+</tr>
+<tr>
+<td>支付图标</td>
+<td>详情页内嵌 12 个支付方式图标，强化结账信任</td>
+</tr>
+</tbody>
+</table>
+<p><strong>PDP 致命短板</strong>：
+- ❌ <strong>全页无任何评价/星级模块</strong>（首次实勘确认，非源码推断）——$405 客单零社会证明
+- ⚠️ "You may also like" 与 "Recently viewed" 两个推荐位<strong>内容为空</strong>（未配置/数据缺失），损失关联销售与停留</p>
+<h2 id="_5">五、技术栈（检测结果）</h2>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>建站平台</td>
+<td><strong>Shopline / SHOPLINE</strong>（源码含 <code>shoplineapp</code> ×9，图片 CDN <code>img-va.myshopline.com</code>）—— <strong>非 Shopify</strong></td>
+</tr>
+<tr>
+<td>网站分析</td>
+<td>Google Analytics（gtag / googletagmanager）；TikTok 像素特征</td>
+</tr>
+<tr>
+<td>Reviews App</td>
+<td>❌ <strong>未检测到</strong>（无 Judge.me / Loox / Yotpo / Okendo 等）—— 高客单却无评价系统，信任短板</td>
+</tr>
+<tr>
+<td>支付</td>
+<td>Visa/MC/Amex/Discover/JCB/Diners/UnionPay；Apple Pay / Google Pay / Cash App Pay；Clearpay(BNPL)</td>
+</tr>
+<tr>
+<td>社媒</td>
+<td>Instagram @bunchlighter、Facebook、TikTok @bunchlighter、YouTube @BUN.CH.0（四平台齐全，配 UGC "Collective" 计划）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">六、优势</h2>
+<ol>
+<li><strong>极强差异化 USP</strong>：用"共鸣开盖音"做听觉记忆点，在打火机红海里独一份，配合手工材质形成感官叙事</li>
+<li><strong>文化叙事 + 收藏定位</strong>：东方/哥特母题命名 + Blog 工艺故事，撑得起 $300–2000 客单</li>
+<li><strong>品类与材质矩阵宽</strong>：30+ 工艺系列，满足收藏、送礼、定制多场景</li>
+<li><strong>高客单转化工具齐</strong>：划线价、BNPL 分期、首单 10%、全球免邮</li>
+<li><strong>B2C + B2B 双轨</strong>：OEM/ODM + 定制刻字，拉高 AOV 与复购/批发想象空间</li>
+</ol>
+<h2 id="_7">七、劣势与风险</h2>
+<ol>
+<li><strong>缺评价体系（最大短板）</strong>：未检测到任何 Reviews App，全站无星级/评价数。$300+ 高客单最依赖社会证明，信任缺口大</li>
+<li><strong>SEO 元数据极弱</strong>：<code>og:title</code> 和 <code>og:description</code> 都只写"BUNCH"，无 <code>&lt;title&gt;</code>/meta description——搜索与社媒分享无信息量</li>
+<li><strong>未完成文案 / 模板痕迹</strong>：</li>
+<li>FAQ 残留占位符 <code>MOQ 是 [XX] pieces</code>、材料写成 <code>[Damascus Steel、Mother-of-Pearl…]</code>（中文顿号）</li>
+<li>About 页 URL 拼错 <code>/pages/our-stroy</code>（应为 story）——不专业、伤 SEO</li>
+<li>FAQ 把产品称作 "bunches"、"realistic appearance"——疑似套用其他品类模板未改净</li>
+<li><strong>变体价格异常</strong>：Feathered Satin 显示 <code>$0.00 - $599.00</code>，存在未配置/破损变体</li>
+<li><strong>定位稀释</strong>：奢侈 B2C 与批发 MOQ/OEM 语言混在同一页，削弱高端感</li>
+<li><strong>品牌信息单薄</strong>：og 描述、社媒整合、信任徽章偏弱，与"奢侈收藏"定位不匹配</li>
+</ol>
+<h2 id="_8">八、优化建议（按优先级）</h2>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🚨 高</td>
+<td>接入评价 App（Loox/Judge.me，主打实拍图+视频），高客单产品页置顶星级与买家秀；并修复 PDP 空白的 "You may also like / Recently viewed" 推荐位</td>
+</tr>
+<tr>
+<td>🚨 高</td>
+<td>补全 SEO：每页独立 <code>&lt;title&gt;</code> + meta description + 有信息量的 og 标签</td>
+</tr>
+<tr>
+<td>🚨 高</td>
+<td>修复 FAQ 占位符 <code>[XX]</code>/材料中文顿号、清理 "bunches" 模板残留文案</td>
+</tr>
+<tr>
+<td>⚠️ 中</td>
+<td>修正 <code>our-stroy</code> URL 拼写；修复 $0.00 异常变体</td>
+</tr>
+<tr>
+<td>⚠️ 中</td>
+<td>B2B 批发/OEM 内容单独入口，与 B2C 奢侈线视觉隔离</td>
+</tr>
+<tr>
+<td>⏳ 低</td>
+<td>增加信任徽章（正品/手工认证）、强化 @bunchlighter UGC 模块、产品详情视频</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">九、截图存档</h2>
+<p>已采集并存于 <code>data/sites/bunchlighter.com/screenshots/</code>：
+- <code>home-desktop.png</code> / <code>home-desktop-full.png</code>（首页桌面端）
+- <code>home-mobile.png</code>（首页移动端 390×844）
+- <code>product-desktop.png</code> / <code>product-mobile.png</code>（Jambhala 产品页）</p>
+<hr />
+<p><em>注：建站平台与第三方像素为源码特征检测，非平台官方确认。评价缺失、推荐位空白、变体异常等为 Playwright 实勘第一手确认。</em></p>
+</div>
+
+<div class="footer">
+    <p>Market Research Agent · Powered by AI · Confidential</p>
+</div>
+
+</body>
+</html>
